@@ -3,8 +3,10 @@ import { LayoutDashboard, Users, UserPlus, Settings, LogOut, Menu, X } from 'luc
 import { useState } from 'react'
 
 import { Link, useLocation } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth'
 
 export default function DashboardLayout({ children }) {
+  const { logout } = useAuth()
   const [isOpen, setIsOpen] = useState(true)
   const location = useLocation()
 
@@ -46,7 +48,10 @@ export default function DashboardLayout({ children }) {
         </nav>
 
         <div className="p-4 border-t border-white/5">
-          <button className="w-full flex items-center gap-4 p-3 rounded-xl hover:bg-red-500/10 hover:text-red-500 transition-all">
+          <button 
+            onClick={logout}
+            className="w-full flex items-center gap-4 p-3 rounded-xl hover:bg-red-500/10 hover:text-red-500 transition-all"
+          >
             <LogOut size={20} />
             {isOpen && <span className="font-medium">Sign Out</span>}
           </button>

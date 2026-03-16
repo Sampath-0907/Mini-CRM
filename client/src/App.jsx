@@ -21,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/leads" element={<ProtectedRoute><Leads /></ProtectedRoute>} />
+          <Route path="/leads/new" element={<ProtectedRoute><Leads openModal={true} /></ProtectedRoute>} />
           <Route path="/leads/:id" element={<ProtectedRoute><LeadDetails /></ProtectedRoute>} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
